@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+  	<meta charset="utf-8" />
+
+  	<!-- Uncomment to make IE8 render like IE7 -->
+  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+	
+
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "What to do", tasks_path %></a></h1>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li><%= link_to "Browse Tasks", tasks_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Priority List" %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Contact Us" %></li>
+    </ul>
+  </div>
+</nav>
+
+
+	<div class="row">
+	  <div class="large-9 columns">
+		<%= yield %>
+	  </div>
+	  <div class="large-3 columns">
+		<h2 class="subheader">About Us</h2>
+		<p>Remember to complete all your tasks.</p>
+		<p>Scenester typewriter bitters tote bag, chia irure PBR wolf accusamus hashtag. Mixtape bitters Vice consectetur High Life, veniam accusamus tempor bicycle rights banjo small batch meh keytar typewriter culpa. Synth sed pour-over try-hard, sint nostrud shabby chic Odd Future Terry Richardson eiusmod viral Etsy esse quis. Brooklyn meh sartorial +1, ea McSweeney's Carles sriracha nihil locavore veniam keffiyeh PBR. Raw denim lo-fi labore, non Austin VHS hoodie cardigan assumenda. Slow-carb Wes Anderson hashtag pop-up wolf retro. Meh exercitation sustainable salvia, id lo-fi kitsch in nesciunt church-key.</p>
+	  </div>
+	</div>
+
+    
+
+    
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>
