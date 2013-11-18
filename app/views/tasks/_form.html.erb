@@ -1,13 +1,15 @@
 <%= form_for(@task) do |f| %>
   <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-      <ul>
-      <% @task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div id="error_explanation" class="row">
+      <div class="large-12 columns">
+        <span class="alert label"><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</span>
+  
+        <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><label class="error"><%= msg %></label></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
@@ -32,7 +34,7 @@
       <%= f.label :priority_id , class: "right inline" %>
     </div>
     <div class="small-10 columns">
-      <%= f.number_field :priority_id %>
+      <%= collection_select(:task, :priority_id, Priority.all, :id, :name, :prompt => true ) %>
     </div>
   </div>
   <div class="row">

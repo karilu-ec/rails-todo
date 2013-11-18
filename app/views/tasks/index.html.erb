@@ -1,11 +1,12 @@
+<% title "Listing tasks" %>
 <h1>Listing tasks</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Priority</th>
+      <th width="200">Title</th>
+      <th width="180">Description</th>
+      <th width="180">Priority</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,10 +15,10 @@
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
+      <tr class="<%= cycle('row_odd', 'row_even') %>">
         <td><%= task.title %></td>
-        <td><%= task.description %></td>
-        <td><%= task.priority_id %></td>
+        <td><%= truncate(strip_tags(task.description), length: 40) %></td>
+        <td><%= task.priority.name %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>

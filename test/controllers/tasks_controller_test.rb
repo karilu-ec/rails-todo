@@ -3,6 +3,11 @@ require 'test_helper'
 class TasksControllerTest < ActionController::TestCase
   setup do
     @task = tasks(:one)
+    @update = {
+      title: "Update the digitial frame",
+      description:"Change the pictures in the digitial frame",
+      priority_id: 1
+    }
   end
 
   test "should get index" do
@@ -35,7 +40,7 @@ class TasksControllerTest < ActionController::TestCase
   end
 
   test "should update task" do
-    patch :update, id: @task, task: { description: @task.description, priority_id: @task.priority_id, title: @task.title }
+    patch :update, id: @task, task: @update
     assert_redirected_to task_path(assigns(:task))
   end
 
