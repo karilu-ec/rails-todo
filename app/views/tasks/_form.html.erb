@@ -33,12 +33,23 @@
     <div class="small-2 columns">
       <%= f.label :priority_id , class: "right inline" %>
     </div>
-    <div class="small-10 columns">
+    <div class="small-6 columns">
       <%= collection_select(:task, :priority_id, Priority.all, :id, :name, :prompt => true ) %>
     </div>
+    <div class="small-4 columns"></div>
+  </div>
+  <div class="row">
+    <div class="small-2 columns">
+      <%= f.label :date_due, class: "right inline" %>
+    </div>
+    <div class="small-6 columns">
+      <%= date_select("task", "date_due", {prompt:true, start_year: Time.now.year}) %>
+    </div>
+    <div class="small-4 columns"></div>
   </div>
   <div class="row">
     <div class="small-10 small-offset-2 columns">
+      <br />
       <%= f.submit %>
     </div>
   </div>

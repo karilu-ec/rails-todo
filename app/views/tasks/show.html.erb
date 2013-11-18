@@ -23,6 +23,10 @@
       <strong>Priority:</strong>
       <%= @task.priority.name %>
     </p>
+    <p>
+      <strong>Due Date:</strong>
+      <%= @task.date_due && @task.date_due.to_s(:due_date) %>
+    </p>
 </div>
 </div>
 <%= link_to 'Edit', edit_task_path(@task), class: "button radius" %> <br />

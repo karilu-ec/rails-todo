@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+rescue_from ActiveRecord::RecordNotFound, with: :invalid_task
 
   # GET /tasks
   # GET /tasks.json
@@ -13,6 +14,11 @@ class TasksController < ApplicationController
   def show
   end
 
+ # GET /tasks/list
+  def list
+    @tasks = Task.order(:date_due)
+  end
+  
   # GET /tasks/new
   def new
     @task = Task.new
@@ -51,7 +57,7 @@ class TasksController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
@@ -70,6 +76,11 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :description, :priority_id)
+      params.require(:task).permit(:title, :description, :priority_id, :date_due)
+    end
+    
+    def invalid_task
+      logger.error "Attempts to access invalid task #{params[:id]}"
+      redirect_to tasks_url, notice: "Invalid Task"
     end
 end

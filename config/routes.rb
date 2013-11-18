@@ -1,4 +1,6 @@
 Todolist::Application.routes.draw do
+  
+  get "tasks/list" => "tasks#list",  :as => :list
   resources :tasks
 
   # The priority is based upon order of creation: first created -> highest priority.
